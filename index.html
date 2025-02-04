@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be My Valentine?</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Monsieur+La+Doulaise&family=Quicksand:wght@300..700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ffafbd, #ffc3a0, #a18cd1);
+      font-family: 'Quicksand', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      animation: slideIn 1s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #f85fab;
+      margin-bottom: 1rem;
+      font-family: 'Monsieur La Doulaise', cursive;
+    }
+
+    .button-container {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    button {
+      background-color: #f85fab;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.25rem;
+      cursor: pointer;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease, transform 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    button:hover {
+      background-color: #f85fab;
+      transform: scale(1.05);
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    #date-info {
+      display: none;
+      margin-top: 1.5rem;
+      color: #f85fab;
+      font-size: 1.2rem;
+      font-family: 'Quicksand', sans-serif;
+      animation: fadeIn 1.5s ease-in forwards;
+    }
+
+    .spotify-container {
+      margin-top: 2rem;
+      display: none;
+      width: 100%;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .save-date-button {
+      background-color: #f85fab;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.25rem;
+      cursor: pointer;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease, transform 0.2s;
+      font-family: 'Inter', sans-serif;
+      margin-top: 2rem;
+    }
+
+    .save-date-button:hover {
+      background-color: #f85fab;
+      transform: scale(1.05);
+    }
+
+    .save-date-button:active {
+      transform: scale(0.95);
+    }
+  </style>
+  <script>
+    function showDateInfo() {
+      document.getElementById('date-info').style.display = 'block';
+      document.querySelector('.button-container').style.display = 'none';
+      document.querySelector('.spotify-container').style.display = 'block';  // Show Spotify player
+    }
+
+    function resizeButtons() {
+      const noButton = document.getElementById('no-btn');
+      const yesButton = document.getElementById('yes-btn');
+
+      // Get current sizes
+      const noButtonWidth = noButton.offsetWidth;
+      const yesButtonWidth = yesButton.offsetWidth;
+
+      // Resize buttons
+      noButton.style.width = Math.max(50, noButtonWidth - 10) + 'px';
+      yesButton.style.width = (yesButtonWidth + 10) + 'px';
+    }
+
+    function saveTheDate() {
+      const eventDetails = {
+        title: "Cena de novios<3",
+        description: "Vamos a pasar una noche increible juntitos",
+        location: "Restaurante Stromboli Trattoria Quiroga",
+        startTime: "2025-02-14T19:00:00", // Format: YYYY-MM-DDTHH:MM:SS
+        endTime: "2025-02-14T21:00:00", // Format: YYYY-MM-DDTHH:MM:SS
+      };
+
+      const calendarUrl = `https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=M2hoZm82bG05bDFuaGphY2syamVvNHJiNzUgamVzdXMubHVuYTIzNTc2NUBwb3Ryb3MuaXRzb24uZWR1Lm14&tmsrc=jesus.luna235765%40potros.itson.edu.mx`;
+      
+      window.open(calendarUrl, '_blank');
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Do you wanna be my valentine?</h1>
+    <div class="button-container">
+      <button id="yes-btn" onclick="showDateInfo()">Yes</button>
+      <button id="no-btn" onclick="resizeButtons()">No</button>
+    </div>
+    <div id="date-info">
+      <p>Restaurante Stromboli Trattoria Quiroga, a las 7 PM</p>
+      
+      <!-- Save the date button -->
+      <button class="save-date-button" onclick="saveTheDate()">Save the Date</button>
+      <br>
+        <br>
+      <p>Te amo 7 millones<3</p>
+    </div>
+    
+    <!-- Spotify Player Embed with autoplay -->
+    <div class="spotify-container">
+      <iframe src="https://open.spotify.com/embed/track/1dGr1c8CrMLDpV6mPbImSI?si=e3d1129b2c90438a" width="100%" height="100" frameborder="0" allow="encrypted-media"></iframe>
+    </div>
+  </div>
+</body>
+</html>
